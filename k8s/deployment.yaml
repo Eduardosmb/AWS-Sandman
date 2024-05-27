@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flaskapp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flaskapp
+  template:
+    metadata:
+      labels:
+        app: flaskapp  # Ensure this label matches the selector in the service
+    spec:
+      containers:
+      - name: flaskapp
+        image: eduardosmb/aws-sandman:latest
+        ports:
+        - containerPort: 5000  # Ensure this matches the Flask app port

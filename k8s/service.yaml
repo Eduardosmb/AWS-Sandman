@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-api-service
+spec:
+  selector:
+    app: flaskapp  # Ensure this selector matches the label in the deployment
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000  # Forward traffic to port 5000 in the container
+  type: LoadBalancer
